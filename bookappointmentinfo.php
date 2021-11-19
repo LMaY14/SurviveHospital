@@ -41,9 +41,9 @@ require_once('connect.php');
 
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody style="color: #0c4876;font-family: 'Bahnschrift';font-size:16px;">
                                     <?php
-                                    $q = "select UserFName,UserLName,BookingDate,BookingTime,BookingDetail,doctor.DoctorFName from bookappointment , user,doctor WHERE bookappointment.UserID=user.UserID and bookappointment.DoctorID=doctor.DoctorID;";
+                                    $q = "select * from bookappointment , user,doctor WHERE bookappointment.UserID=user.UserID and bookappointment.DoctorID=doctor.DoctorID ORDER BY BookingDate ;";
                                     $result = $mysqli->query($q);
                                     if (!$result) {
                                         echo "Select failed. Error: " . $mysqli->error;

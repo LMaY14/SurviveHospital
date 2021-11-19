@@ -1,8 +1,15 @@
-<!--?php require_once('connect.php'); ?-->
 <?php
 require_once('connect.php');
 session_start();
 $BookingID = $_GET['BookingID'];
+
+$query = "SELECT * from bookappointment where BookingID = $BookingID LIMIT 1";
+$result = $mysqli->query($query);
+while ($row = $result->fetch_assoc()) {
+    $BookingDate = $row["BookingDate"];
+    $BookingTime = $row["BookingTime"];
+    $BookingDetail = $row["BookingDetail"];
+}
 
 ?>
 <!doctype html>
@@ -35,15 +42,19 @@ $BookingID = $_GET['BookingID'];
                     <div class="row">
                         <div class="mx-auto col-lg-10" style="color: #0c4876;font-family: 'Bahnschrift';font-size:28px;">
                             <label>Date </label>
-                            <input type="date" id="date" name="BookingDate" style="color: #0c4876;font-family: 'Bahnschrift';font-size:20px;">
+                            <?php
+                            echo "<input type='date' name ='BookingDate' style='color: #0c4876;font-family: 'Bahnschrift';font-size:20px;' value ='" . $BookingDate . "' >";
+                            ?>
                             <br>
                             <label>Time </label>
-                            <input type="time" id="Time" name="BookingTime" style="color: #0c4876;font-family: 'Bahnschrift';font-size:20px;">
-                            <br>
-                            <label>Medical concern </label>
-                            <input type="text" id="text" name="BookingDetail" style="color: #0c4876;font-family: 'Bahnschrift';font-size:20px;">
-                            <button class="btn btn-success" type="submit" name="book">Book</button>
                             <?php
+                            echo "<input type='time' name ='BookingTime' style='color: #0c4876;font-family: 'Bahnschrift';font-size:20px;' value ='" . $BookingTime . "' >";
+                            ?><br>
+                            <label>Medical concern </label>
+                            <?php
+                            echo "<textarea name ='BookingDetail' rows = '2' cols = '40' style='color: #0c4876;font-family: 'Bahnschrift';font-size:20px;'>" . $BookingDetail .  "</textarea>";
+                            echo "<p></p>";
+                            echo "";
                             echo "<input type='hidden' name='BookingID' value=$BookingID>";
                             ?>
                         </div>
@@ -53,8 +64,9 @@ $BookingID = $_GET['BookingID'];
                     <div class="container">
                         <div class="row">
                             <div class="col-md-10">
-                                <a class="btn btn-primary" type="button" href="bookappointment_user.php">Back</a>
-                            </div>
+                                
+                                <a class="btn btn-primary" type="button" href="bookappointment_user.php">Back</a> 
+                                <button class='btn btn-success' type='submit' name='book' >Save</button>                           </div>
                         </div>
                     </div>
                 </div>

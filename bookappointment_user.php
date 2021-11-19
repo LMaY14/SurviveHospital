@@ -46,7 +46,7 @@ $UserID = $_SESSION['UserID'];
                                 </thead>
                                 <tbody style="color: #0c4876;font-family: 'Bahnschrift';font-size:16px;">
                                     <?php
-                                    $q = "select UserFName,UserLName,BookingDate,BookingTime,BookingDetail,doctor.DoctorFName from bookappointment , user,doctor WHERE bookappointment.UserID=user.UserID and bookappointment.DoctorID=doctor.DoctorID and bookappointment.UserID=$UserID;";
+                                    $q = "select * from bookappointment , user,doctor WHERE bookappointment.UserID=user.UserID and bookappointment.DoctorID=doctor.DoctorID and bookappointment.UserID=$UserID;";
                                     $result = $mysqli->query($q);
                                     if (!$result) {
                                         echo "Select failed. Error: " . $mysqli->error;

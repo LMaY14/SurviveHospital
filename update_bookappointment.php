@@ -9,7 +9,7 @@ if(isset($_POST['book'])){
 		$BookingTime = $_POST['BookingTime'];
 		$BookingDetail = $_POST['BookingDetail'];
         $sql = "UPDATE bookappointment SET BookingDate = '$BookingDate', BookingTime = '$BookingTime', BookingDetail = '$BookingDetail'
-        WHERE BookingID = $BookingID";
+        WHERE BookingID = $BookingID;";
         $result1=$mysqli->query($sql);
 		if(!$result1){
 			echo "INSERT failed. Error: ".$mysqli->error ;

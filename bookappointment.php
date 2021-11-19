@@ -40,7 +40,7 @@ session_start();
                                 <input type="time" id="Time" name="BookingTime" style="color: #0c4876;font-family: 'Bahnschrift';font-size:20px;">
                                 <br>
                                 <label>Medical concern </label>
-                                <input type="text" id="text" name="BookingDetail" style="color: #0c4876;font-family: 'Bahnschrift';font-size:20px;">
+                                <textarea name ='BookingDetail' rows = '2' cols = '40' style="color: #0c4876;font-family: 'Bahnschrift';font-size:20px;"></textarea>
                                 <br>
                                 <label>Select doctor (optional) </label>
                                 <select name="DoctorID" style="color: #0c4876;font-family: 'Bahnschrift';font-size:20px;">doctor list
