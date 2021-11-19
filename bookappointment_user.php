@@ -46,7 +46,7 @@ $UserID = $_SESSION['UserID'];
                                 </thead>
                                 <tbody style="color: #0c4876;font-family: 'Bahnschrift';font-size:16px;">
                                     <?php
-                                    $q = "select * from bookappointment , user WHERE bookappointment.UserID=user.UserID and bookappointment.UserID=$UserID;";
+                                    $q = "select UserFName,UserLName,BookingDate,BookingTime,BookingDetail,doctor.DoctorFName from bookappointment , user,doctor WHERE bookappointment.UserID=user.UserID and bookappointment.DoctorID=doctor.DoctorID and bookappointment.UserID=$UserID;";
                                     $result = $mysqli->query($q);
                                     if (!$result) {
                                         echo "Select failed. Error: " . $mysqli->error;
@@ -59,7 +59,7 @@ $UserID = $_SESSION['UserID'];
                                             <td><?= $row['BookingDate'] ?></td>
                                             <td><?= $row['BookingTime'] ?></td>
                                             <td><?= $row['BookingDetail'] ?></td>
-                                            <td><?= $row['DoctorID'] ?></td>
+                                            <td><?= $row['DoctorFName'] ?></td>
                                             <td><a href='edit_bookappointment.php?BookingID=<?= $row['BookingID'] ?>'><img src="image/edit.png" width="24" height="24"></a></td>
                                             <td><a href='deleteappointment_user.php?BookingID=<?= $row['BookingID'] ?>'><img src="image/delete.png" width="24" height="24"></a></td>
                                         </tr>

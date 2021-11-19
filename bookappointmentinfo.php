@@ -43,7 +43,7 @@ require_once('connect.php');
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $q = "select * from bookappointment , user WHERE bookappointment.UserID=user.UserID ORDER BY bookappointment.BookingDate;";
+                                    $q = "select UserFName,UserLName,BookingDate,BookingTime,BookingDetail,doctor.DoctorFName from bookappointment , user,doctor WHERE bookappointment.UserID=user.UserID and bookappointment.DoctorID=doctor.DoctorID;";
                                     $result = $mysqli->query($q);
                                     if (!$result) {
                                         echo "Select failed. Error: " . $mysqli->error;
@@ -56,7 +56,7 @@ require_once('connect.php');
                                         <td><?=$row['BookingDate']?></td>
                                         <td><?=$row['BookingTime']?></td>
                                         <td><?=$row['BookingDetail']?></td>
-                                        <td><?=$row['DoctorID']?></td>
+                                        <td><?=$row['DoctorFName']?></td>
                                         <td><a href='deleteappointment.php?BookingID=<?=$row['BookingID']?>'><img src="image/delete.png" width="24" height="24"></a></td>
                                     </tr>
                                     <?php
